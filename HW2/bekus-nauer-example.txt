@@ -1,0 +1,27 @@
+<type_struct>::=typedef<anonimous_struct><identify>;<initials>
+
+<anonimous_struct::==struct{<members>}
+<members>::=<empty>|<member>|<member><members>
+<member>::=<const><acceptable_typename><identify><array>;
+<const>::=<empty>|const
+<acceptable_typename>::=int|char
+<array>::=<empty>|[<number>]
+<identify>::=<id_symbol><tailing>
+<tailing>::=<empty>|<digit><tailing>|<id_symbol><tailing>
+<digit>::="0"|"1"|...|"9"
+<id_symbol>::="_"|"a"|...|"z"|"A"|...|"Z"
+<number>::=<digit>|<digit><number>
+<empty>::=""
+
+<initials>::=<initial>|<initial><initials>
+<initial>::=<const><typename><params>;
+<typename>::=<identify>
+<params>::=<param>|<param>,<params>
+<param>::=<identify> = {<init_blocks>}
+<init_blocks>::=<init_block>|<init_block>,<init_blocks>
+<init_block>::=<z_number>|<string>
+<z_number>::=<sign><number>|<number>
+<sign>::=+ | -
+<string>::='<symbol>'|"<symbols>"
+<symbols>::=<symbol>|<symbol><symbols>
+<symbol>::=<empty>|<<ch: ASCII.include?(ch)>>
